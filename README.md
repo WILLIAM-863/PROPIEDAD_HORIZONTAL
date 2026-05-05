@@ -29,3 +29,8 @@ Regla implementada: no permitir traslape de horarios para un mismo espacio.
 - `docs/`: entregables academicos
 - `app/`: miniaplicacion
 - `skill-propiedad-horizontal/`: skill auto-mejorable del proyecto
+
+## Docker en esta maquina
+Se intento instalar Docker Desktop automaticamente el 5 de mayo de 2026, pero fallo por permisos de administrador (UAC).
+
+Ver guia: `docs/02_docker_setup.md`.
