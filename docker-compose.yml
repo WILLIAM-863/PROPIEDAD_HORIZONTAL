@@ -1,5 +1,4 @@
-﻿version: "3.9"
-services:
+﻿services:
   db:
     image: postgres:16
     container_name: ph_db
@@ -8,6 +7,7 @@ services:
       POSTGRES_DB: ph
       POSTGRES_USER: ph_admin
       POSTGRES_PASSWORD: ph_admin_2026
+      POSTGRES_HOST_AUTH_METHOD: trust
     ports:
       - "5432:5432"
     volumes:
