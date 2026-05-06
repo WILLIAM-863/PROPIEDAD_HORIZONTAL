@@ -11,6 +11,19 @@ JOIN espacio_comun e ON e.espacio_id = r.espacio_id
 JOIN unidad u ON u.unidad_id = r.unidad_id
 JOIN residente rs ON rs.residente_id = r.residente_id;
 
+CREATE OR REPLACE VIEW vw_pqrs_detalle AS
+SELECT p.pqrs_id,
+       u.torre || '-' || u.numero AS unidad,
+       r.nombre_completo AS residente,
+       e.nombre AS estado,
+       p.asunto,
+       p.descripcion,
+       p.fecha_registro
+FROM pqrs p
+JOIN unidad u ON u.unidad_id = p.unidad_id
+JOIN residente r ON r.residente_id = p.residente_id
+JOIN estado_pqrs e ON e.estado_pqrs_id = p.estado_pqrs_id;
+
 DO $$
 BEGIN
    IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'rol_admin_ph') THEN

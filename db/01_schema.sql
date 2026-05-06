@@ -51,3 +51,25 @@ CREATE TABLE reserva_espacio (
 );
 
 CREATE INDEX idx_reserva_espacio_horario ON reserva_espacio (espacio_id, fecha_inicio, fecha_fin);
+
+CREATE TABLE estado_pqrs (
+  estado_pqrs_id SERIAL PRIMARY KEY,
+  nombre VARCHAR(30) UNIQUE NOT NULL
+);
+
+CREATE TABLE pqrs (
+  pqrs_id SERIAL PRIMARY KEY,
+  unidad_id INT NOT NULL REFERENCES unidad(unidad_id),
+  residente_id INT NOT NULL REFERENCES residente(residente_id),
+  estado_pqrs_id INT NOT NULL REFERENCES estado_pqrs(estado_pqrs_id),
+  asunto VARCHAR(120) NOT NULL,
+  descripcion TEXT NOT NULL,
+  fecha_registro TIMESTAMP NOT NULL DEFAULT now()
+);
+
+CREATE TABLE respuesta_pqrs (
+  respuesta_id SERIAL PRIMARY KEY,
+  pqrs_id INT NOT NULL REFERENCES pqrs(pqrs_id) ON DELETE CASCADE,
+  detalle TEXT NOT NULL,
+  fecha_respuesta TIMESTAMP NOT NULL DEFAULT now()
+);

@@ -24,3 +24,15 @@ INSERT INTO reserva_espacio (espacio_id, unidad_id, residente_id, fecha_inicio, 
 VALUES
 (1,1,1,'2026-05-08 18:00','2026-05-08 22:00','APROBADA'),
 (3,3,3,'2026-05-09 08:00','2026-05-09 10:00','ACTIVA');
+
+INSERT INTO estado_pqrs (nombre) VALUES
+('ABIERTA'),
+('EN_REVISION'),
+('CERRADA');
+
+INSERT INTO pqrs (unidad_id, residente_id, estado_pqrs_id, asunto, descripcion) VALUES
+(1,1,1,'Ruido nocturno','Se reporta ruido alto en el piso superior despues de las 11pm.'),
+(2,2,2,'Fuga de agua','Hay fuga leve en zona comun cercana al ascensor.');
+
+INSERT INTO respuesta_pqrs (pqrs_id, detalle) VALUES
+(2,'Se agenda visita de mantenimiento para validacion tecnica.');
